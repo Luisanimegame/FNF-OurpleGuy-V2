@@ -117,8 +117,8 @@ class MainMenuState extends MusicBeatState
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
-
-		var scale:Float = 1;
+		
+		var scale:Float = 1.55;
 		/*if(optionShit.length > 6) {
 			scale = 6 / optionShit.length;
 		}*/
@@ -170,6 +170,11 @@ class MainMenuState extends MusicBeatState
 			}
 		}
 		#end
+		
+		if(FlxG.sound.music == null) {
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+
+			FlxG.sound.music.fadeIn(1, 0, 0.7);
 		
 		#if mobile
 		addVirtualPad(UP_DOWN, A_B);
@@ -299,7 +304,7 @@ class MainMenuState extends MusicBeatState
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			//spr.screenCenter(X);
+			
 		});
 	}
 
@@ -324,8 +329,7 @@ class MainMenuState extends MusicBeatState
 				if(menuItems.length > 4) {
 					add = menuItems.length * 8;
 				}
-				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y - add);
-				spr.centerOffsets();
+				camFollow.setPosition(0, spr.getGraphicMidpoint().y - add);
 			}
 		});
 	}
