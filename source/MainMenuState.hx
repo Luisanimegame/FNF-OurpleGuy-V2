@@ -20,9 +20,6 @@ import lime.app.Application;
 import Achievements;
 import editors.MasterEditorMenu;
 import flixel.input.keyboard.FlxKey;
-import flixel.util.FlxTimer;
-import flixel.system.FlxSound;
-import flixel.addons.display.FlxTiledSprite;itors.MasterEditorMenuclass MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.5.2h'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
