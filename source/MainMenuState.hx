@@ -98,18 +98,7 @@ class MainMenuState extends MusicBeatState
 		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		magenta.color = 0xFFfd719b;
 		add(magenta);
-
-		menubars_top = new FlxSprite(Paths.image('menubars'), FlxG.width * 3, FlxG.width * 3, true, false);
-		menubars_top.scrollFactor.set(0, 0);
-		menubars_top.antialiasing = false;
-		add(menubars_top);
-
-		menubars_bottom = new FlxSprite(Paths.image('menubarsflip'), FlxG.width * 3, FlxG.width * 3, true, false);
-		menubars_bottom.scrollFactor.set(0, 0);
-		menubars_bottom.y = FlxG.height - 130;
-		menubars_bottom.antialiasing = false;
-		add(menubars_bottom);
-
+		
 		var phonecords:FlxSprite = new FlxSprite().loadGraphic(Paths.image('phonecord'));
 		phonecords.scrollFactor.set(0, 0);
 		phonecords.updateHitbox();
