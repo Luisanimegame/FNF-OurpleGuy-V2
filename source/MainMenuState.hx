@@ -32,12 +32,6 @@ class MainMenuState extends MusicBeatState
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
 
-	var menubars_top:FlxTiledSprite;
-
-	var menubars_bottom:FlxTiledSprite;
-
-	var checkerboard:FlxTiledSprite;
-	
 	var optionShit:Array<String> = [
 		'story_mode',
 		'freeplay',
@@ -104,13 +98,6 @@ class MainMenuState extends MusicBeatState
 		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		magenta.color = 0xFFfd719b;
 		add(magenta);
-
-		checkerboard = new FlxTiledSprite(Paths.image('checkerboard'), FlxG.width * 3, FlxG.width * 3, true, true);
-		checkerboard.scrollFactor.set(0, 0);
-		checkerboard.x = -100;
-		checkerboard.y = -100;
-		checkerboard.antialiasing = false;
-		add(checkerboard);
 
 		menubars_top = new FlxTiledSprite(Paths.image('menubars'), FlxG.width * 3, FlxG.width * 3, true, false);
 		menubars_top.scrollFactor.set(0, 0);
@@ -221,11 +208,6 @@ class MainMenuState extends MusicBeatState
 			if(FreeplayState.vocals != null) FreeplayState.vocals.volume += 0.5 * elapsed;
 		}
 		
-		menubars_top.scrollX -= 1 * 60 * elapsed;
-		menubars_bottom.scrollX += 1 * 60 * elapsed;
-		checkerboard.scrollX += 1 * 25 * elapsed;
-		checkerboard.scrollY -= 1 * 25 * elapsed;
-
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 
