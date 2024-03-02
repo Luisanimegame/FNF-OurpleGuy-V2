@@ -1,0 +1,144 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 30,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				320,
+				290
+			],
+			"anim": "singLEFT",
+			"fps": 30,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				320,
+				290
+			],
+			"anim": "singDOWN",
+			"fps": 30,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				320,
+				290
+			],
+			"anim": "singUP",
+			"fps": 30,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				320,
+				290
+			],
+			"anim": "singRIGHT",
+			"fps": 30,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-40,
+				-220
+			],
+			"loop": false,
+			"fps": 33,
+			"anim": "cancer",
+			"indices": [],
+			"name": "cancer"
+		},
+		{
+			"offsets": [
+				-40,
+				-220
+			],
+			"loop": false,
+			"fps": 38,
+			"anim": "false",
+			"indices": [],
+			"name": "falsesavior"
+		},
+		{
+			"offsets": [
+				-40,
+				-220
+			],
+			"loop": false,
+			"fps": 26,
+			"anim": "orphan",
+			"indices": [],
+			"name": "orphan"
+		},
+		{
+			"offsets": [
+				-40,
+				-220
+			],
+			"loop": false,
+			"fps": 30,
+			"anim": "meaningless",
+			"indices": [],
+			"name": "meaningless"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-40,
+				-220
+			],
+			"anim": "coward",
+			"fps": 24,
+			"name": "coward",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-40,
+				-220
+			],
+			"indices": [],
+			"fps": 29,
+			"anim": "asbad",
+			"loop": false,
+			"name": "asbadasme"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/henry",
+	"position": [
+		60,
+		30
+	],
+	"healthicon": "henry",
+	"flip_x": false,
+	"healthbar_colors": [
+		98,
+		81,
+		91
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1.8
+}

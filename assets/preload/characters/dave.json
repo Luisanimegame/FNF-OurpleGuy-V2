@@ -1,0 +1,292 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				504,
+				383
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5
+			],
+			"name": "Right0"
+		},
+		{
+			"offsets": [
+				504,
+				383
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "UpMiss"
+		},
+		{
+			"offsets": [
+				504,
+				383
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "DownMiss"
+		},
+		{
+			"offsets": [
+				504,
+				383
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5
+			],
+			"name": "Left0"
+		},
+		{
+			"offsets": [
+				504,
+				383
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5
+			],
+			"name": "RightMiss"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceRight",
+			"indices": [],
+			"name": "Idle"
+		},
+		{
+			"offsets": [
+				504,
+				383
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "LeftMiss"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "danceLeft",
+			"fps": 24,
+			"name": "Idle",
+			"indices": [
+				7,
+				7
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				504,
+				383
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Down0",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				90,
+				-460
+			],
+			"anim": "idle-dead",
+			"fps": 24,
+			"name": "Dead",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				504,
+				383
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Up0",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5,
+				5
+			]
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/dave",
+	"position": [
+		150,
+		80
+	],
+	"healthicon": "duo",
+	"flip_x": false,
+	"healthbar_colors": [
+		234,
+		123,
+		47
+	],
+	"camera_position": [
+		-570,
+		180
+	],
+	"sing_duration": 6.1,
+	"scale": 1.8
+}

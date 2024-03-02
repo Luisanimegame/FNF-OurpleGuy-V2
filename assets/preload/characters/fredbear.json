@@ -1,0 +1,155 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle"
+		},
+		{
+			"offsets": [
+				15,
+				39
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left0"
+		},
+		{
+			"offsets": [
+				-5,
+				4
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down0"
+		},
+		{
+			"offsets": [
+				-3,
+				56
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up0"
+		},
+		{
+			"offsets": [
+				-21,
+				44
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right0"
+		},
+		{
+			"offsets": [
+				50,
+				250
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "firstDeath",
+			"indices": [],
+			"name": "death"
+		},
+		{
+			"offsets": [
+				50,
+				250
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "deathLoop",
+			"indices": [],
+			"name": "death"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				250
+			],
+			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "death",
+			"indices": []
+		},
+		{
+			"offsets": [
+				14,
+				33
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "LeftMiss"
+		},
+		{
+			"offsets": [
+				-9,
+				-9
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "DownMiss"
+		},
+		{
+			"offsets": [
+				41,
+				-4
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "UpMiss"
+		},
+		{
+			"offsets": [
+				-20,
+				48
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "RightMiss"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/fredbear",
+	"position": [
+		0,
+		20
+	],
+	"healthicon": "bread",
+	"flip_x": true,
+	"healthbar_colors": [
+		195,
+		155,
+		6
+	],
+	"camera_position": [
+		-250,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}
