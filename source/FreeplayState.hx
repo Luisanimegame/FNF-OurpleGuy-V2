@@ -313,6 +313,10 @@ class FreeplayState extends MusicBeatState
 		vignette.alpha = 0.85;
 		vignette.cameras = [camBG];
 		add(vignette);
+		
+		#if mobile
+		addVirtualPad(LEFT_FULL, A_B_C_X_Y);
+		#end
 
 		super.create();
 		camGame.setFilters([new ShaderFilter(new PincushionShader())]);
