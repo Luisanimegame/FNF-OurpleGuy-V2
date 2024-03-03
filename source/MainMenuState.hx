@@ -99,6 +99,20 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 		
+		var up:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menubars'));
+		up.scrollFactor.set(0, 0);
+		up.updateHitbox();
+		up.screenCenter();
+		up.antialiasing = false;
+		add(up);
+		
+		var down:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menubarsflip'));
+		down.scrollFactor.set(0, 0);
+		down.updateHitbox();
+		down.screenCenter();
+		down.antialiasing = false;
+		add(down);
+		
 		var phonecords:FlxSprite = new FlxSprite().loadGraphic(Paths.image('phonecord'));
 		phonecords.scrollFactor.set(0, 0);
 		phonecords.updateHitbox();
