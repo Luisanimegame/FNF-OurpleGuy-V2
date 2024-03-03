@@ -19,7 +19,6 @@ import flixel.system.FlxSound;
 import openfl.utils.Assets as OpenFlAssets;
 import openfl.filters.ShaderFilter;
 import WeekData;
-import Shaders;
 import flixel.addons.display.FlxTiledSprite;
 import flixel.util.FlxSave;
 import flixel.FlxCamera;
@@ -169,9 +168,9 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
+			var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
 			songText.isMenuItem = true;
-			songText.targetY = i;
+			songText.targetY = i - curSelected;
 			//grpSongs.add(songText);
 
 			var arcadeMachine:ArcadeMachine = new ArcadeMachine((100 * i) + 30, 200);
@@ -197,10 +196,8 @@ class FreeplayState extends MusicBeatState
 				var textScale:Float = 980 / songText.width;
 				songText.scale.x = textScale;
 				for (letter in songText.lettersArray)
-				{
 					letter.x *= textScale;
 					letter.offset.x *= textScale;
-				}
 				//songText.updateHitbox();
 				//trace(songs[i].songName + ' new scale: ' + textScale);
 			}
@@ -319,8 +316,6 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		super.create();
-		camGame.setFilters([new ShaderFilter(new PincushionShader())]);
-		camGame.filtersEnabled = !ClientPrefs.lowQuality;
 	}
 
 	override function closeSubState() {
