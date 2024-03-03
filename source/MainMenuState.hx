@@ -171,11 +171,6 @@ class MainMenuState extends MusicBeatState
 		}
 		#end
 		
-		if(FlxG.sound.music == null) {
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
-
-			FlxG.sound.music.fadeIn(1, 0, 0.7);
-		
 		#if mobile
 		addVirtualPad(UP_DOWN, A_B);
 		#end
