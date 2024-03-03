@@ -38,7 +38,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 
 		//I'd suggest using "Low Quality" as an example for making your own option since it is the simplest here
 		var option:Option = new Option('Low Quality', //Name
-			'If checked, disables some background details,\ndecreases loading times and improves performance.', //Description
+			'If checked, disables some background details and shaders,\ndecreases loading times and improves performance.', //Description
 			'lowQuality', //Save data variable name
 			'bool', //Variable type
 			false); //Default value
@@ -51,13 +51,6 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			true);
 		option.showBoyfriend = true;
 		option.onChange = onChangeAntiAliasing; //Changing onChange is only needed if you want to make a special interaction after it changes the value
-		addOption(option);
-
-		var option:Option = new Option('Shaders', //Name
-			'If unchecked, disables shaders.\nIt\'s used for some visual effects, and also CPU intensive for weaker PCs.', //Description
-			'shaders', //Save data variable name
-			'bool', //Variable type
-			true); //Default value
 		addOption(option);
 
 		#if !html5 //Apparently other framerates isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
@@ -73,6 +66,16 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		option.displayFormat = '%v FPS';
 		option.onChange = onChangeFramerate;
 		#end
+
+		/*
+		var option:Option = new Option('Persistent Cached Data',
+			'If checked, images loaded will stay in memory\nuntil the game is closed, this increases memory usage,\nbut basically makes reloading times instant.',
+			'imagesPersist',
+			'bool',
+			false);
+		option.onChange = onChangePersistentData; //Persistent Cached Data changes FlxGraphic.defaultPersist
+		addOption(option);
+		*/
 
 		super();
 	}
