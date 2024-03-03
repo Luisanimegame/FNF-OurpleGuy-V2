@@ -54,6 +54,7 @@ class FlxHitbox extends FlxSpriteGroup
 		shape.graphics.lineStyle(10, Color, 1);
 		shape.graphics.drawRect(0, 0, Width, Height);
 		shape.graphics.endFill();
+		shape.alpha = 0.00001;
 
 		var bitmap:BitmapData = new BitmapData(Width, Height, true, 0);
 		bitmap.draw(shape);
@@ -71,7 +72,7 @@ class FlxHitbox extends FlxSpriteGroup
 		hint.onDown.callback = function()
 		{
 			if (hint.alpha != 0.2)
-				hint.alpha = 0.2;
+				hint.alpha = 0.00001;
 		}
 		hint.onUp.callback = function()
 		{
