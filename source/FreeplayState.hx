@@ -282,7 +282,7 @@ class FreeplayState extends MusicBeatState
 			var leText:String = "Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
 			var size:Int = 18;
 			#end
-
+		#end
 		r_arrow = new FlxSprite(900, 300);
 		r_arrow.frames = Paths.getSparrowAtlas('freeplayarrow', 'preload');
 		r_arrow.animation.addByPrefix('normal', 'normal', 12, true);
