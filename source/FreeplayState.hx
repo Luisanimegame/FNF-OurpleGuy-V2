@@ -111,22 +111,22 @@ class FreeplayState extends MusicBeatState
 		addSong('guy', 0, 'guy', 0xFF000000, 'unlocked');
 		addSong('midnight', 0, 'orange', 0xFF000000, 'unlocked');
 		addSong('terminated', 0, 'henryt', 0xFF000000, 'unlocked');
-		addSong('lurking', 0, 'guy', 0xFF000000, FlxG.save.data.lurkingLock);
-		addSong('lore', 0, 'guy', 0xFF000000, FlxG.save.data.loreLock);
-		addSong('blubber', 0, 'guy', 0xFF000000, FlxG.save.data.blubberLock);
-		addSong('golden', 0, 'guy', 0xFF000000, FlxG.save.data.goldenLock);
-		addSong('performance', 0, 'guy', 0xFF000000, FlxG.save.data.performanceLock);
-		addSong('bite', 0, 'guy', 0xFF000000, FlxG.save.data.biteLock);
-		addSong('trapped', 0, 'guy', 0xFF000000, FlxG.save.data.trappedLock);
-		addSong('go fish', 0, 'guy', 0xFF000000, FlxG.save.data.gofishLock);
-		addSong('watchful', 0, 'guy', 0xFF000000, FlxG.save.data.watchfulLock);
-		addSong('restless', 0, 'guy', 0xFF000000, FlxG.save.data.restlessLock);
-		addSong('beatbox', 0, 'guy', 0xFF000000, FlxG.save.data.beatboxLock);
-		addSong('showtime', 0, 'guy', 0xFF000000, FlxG.save.data.showtimeLock);
-		addSong('man', 0, 'guy', 0xFF000000, FlxG.save.data.manLock);
-		addSong('followed', 0, 'guy', 0xFF000000, FlxG.save.data.followedLock);
-		addSong('fazfuck news', 0, 'guy', 0xFF000000, FlxG.save.data.fazfuckLock);
-		addSong('criminal', 0, 'guy', 0xFF000000, FlxG.save.data.criminalLock);
+		addSong('lurking', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('lore', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('blubber', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('golden', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('performance', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('bite', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('trapped', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('go fish', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('watchful', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('restless', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('beatbox', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('showtime', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('man', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('followed', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('fazfuck news', 0, 'guy', 0xFF000000, 'unlocked');
+		addSong('criminal', 0, 'guy', 0xFF000000, 'unlocked');
 		#if !debug 
 			if (everyFreeplaySongBeaten() || FlxG.save.data.millerHere) addSong('miller', 0, 'guy', 0xFF000000, FlxG.save.data.millerLock);
 		#else
@@ -309,7 +309,7 @@ class FreeplayState extends MusicBeatState
 		add(vignette);
 		
 		#if mobile
-		addVirtualPad(LEFT_FULL, A_B_C_X_Y);
+		addVirtualPad(LEFT_FULL, A_B_C);
 		#end
 
 		super.create();
