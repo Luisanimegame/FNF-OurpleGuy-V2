@@ -3751,14 +3751,14 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		if (!SONG.notes[id].mustHitSection)
+		if (!SONG.notes[curSection].mustHitSection)
 		{
-			moveCamera(true, isNote);
+			moveCamera(true);
 			callOnLuas('onMoveCamera', ['dad']);
 		}
 		else
 		{
-			moveCamera(false, isNote);
+			moveCamera(true);
 			callOnLuas('onMoveCamera', ['boyfriend']);
 		}
 	}
