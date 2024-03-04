@@ -336,9 +336,6 @@ class PlayState extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 
-		if (SONG.song.toLowerCase() == 'criminal' || SONG.song.toLowerCase() == 'bite' || SONG.song.toLowerCase() == 'beatbox' || SONG.song.toLowerCase() == 'blubber' || SONG.song.toLowerCase() == 'trapped') gotOurpleNotes = false;
-		else gotOurpleNotes = true;
-
 		// for lua
 		instance = this;
 
@@ -3746,33 +3743,6 @@ class PlayState extends MusicBeatState
 
 	function moveCameraSection(?id:Int = 0, isNote:Bool = false):Void {
 		if(SONG.notes[id] == null || curStage == 'vhs') return;
-
-		if (gf != null && SONG.notes[id].gfSection)
-		{
-			var yOffsetB:Int = 0;
-			var xOffsetB:Int = 0;
-			if (ClientPrefs.camFollow){
-				if (gf.animation.curAnim.name.startsWith('singUP')){
-					yOffsetB = -25;
-					xOffsetB = 0;
-				}
-				else if (gf.animation.curAnim.name.startsWith('singDOWN')){
-					yOffsetB = 25;
-					xOffsetB = 0;
-				}
-				else if (gf.animation.curAnim.name.startsWith('singLEFT')){
-					yOffsetB = 0;
-					xOffsetB = -25;
-				}
-				else if (gf.animation.curAnim.name.startsWith('singRIGHT')){
-					yOffsetB = 0;
-					xOffsetB = 25;
-				}
-				else if (!gf.animation.curAnim.name.startsWith('sing')){
-					yOffsetB = 0;
-					xOffsetB = 0;
-				}
-			}
 			camFollow.set(gf.getMidpoint().x + xOffsetB, gf.getMidpoint().y + yOffsetB);
 			camFollow.x += gf.cameraPosition[0] + girlfriendCameraOffset[0];
 			camFollow.y += gf.cameraPosition[1] + girlfriendCameraOffset[1];
@@ -3796,50 +3766,6 @@ class PlayState extends MusicBeatState
 	var cameraTwn:FlxTween;
 	public function moveCamera(isDad:Bool, isNote:Bool = false, yOffsetB:Float = 0, xOffsetB:Float = 0, yOffsetD:Float = 0, xOffsetD:Float = 0)
 	{
-		if (isNote && ClientPrefs.camFollow){
-			if (boyfriend.animation.curAnim.name.startsWith('singUP')){
-				yOffsetB = -25;
-				xOffsetB = 0;
-			}
-			else if (boyfriend.animation.curAnim.name.startsWith('singDOWN')){
-				yOffsetB = 25;
-				xOffsetB = 0;
-			}
-			else if (boyfriend.animation.curAnim.name.startsWith('singLEFT')){
-				yOffsetB = 0;
-				xOffsetB = -25;
-			}
-			else if (boyfriend.animation.curAnim.name.startsWith('singRIGHT')){
-				yOffsetB = 0;
-				xOffsetB = 25;
-			}
-			else if (!boyfriend.animation.curAnim.name.startsWith('sing') || !PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection){
-				yOffsetB = 0;
-				xOffsetB = 0;
-			}
-
-			if (dad.animation.curAnim.name.startsWith('singUP')){
-				yOffsetD = -25;
-				xOffsetD = 0;
-			}
-			else if (dad.animation.curAnim.name.startsWith('singDOWN')){
-				yOffsetD = 25;
-				xOffsetD = 0;
-			}
-			else if (dad.animation.curAnim.name.startsWith('singLEFT')){
-				yOffsetD = 0;
-				xOffsetD = -25;
-			}
-			else if (dad.animation.curAnim.name.startsWith('singRIGHT')){
-				yOffsetD = 0;
-				xOffsetD = 25;
-			}
-			else if (!dad.animation.curAnim.name.startsWith('sing') || PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection){
-				yOffsetD = 0;
-				xOffsetD = 0;
-			}
-		}
-		
 		if(isDad)
 		{
 			camFollow.set(dad.getMidpoint().x + 150 + xOffsetD, dad.getMidpoint().y - 100 + yOffsetD);
