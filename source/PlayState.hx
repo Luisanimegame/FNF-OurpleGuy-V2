@@ -3751,7 +3751,7 @@ class PlayState extends MusicBeatState
 		{
 			var yOffsetB:Int = 0;
 			var xOffsetB:Int = 0;
-			if (ClientPrefs.followChars){
+			if (ClientPrefs.camFollow){
 				if (gf.animation.curAnim.name.startsWith('singUP')){
 					yOffsetB = -25;
 					xOffsetB = 0;
@@ -3796,7 +3796,7 @@ class PlayState extends MusicBeatState
 	var cameraTwn:FlxTween;
 	public function moveCamera(isDad:Bool, isNote:Bool = false, yOffsetB:Float = 0, xOffsetB:Float = 0, yOffsetD:Float = 0, xOffsetD:Float = 0)
 	{
-		if (isNote && ClientPrefs.followChars){
+		if (isNote && ClientPrefs.camFollow){
 			if (boyfriend.animation.curAnim.name.startsWith('singUP')){
 				yOffsetB = -25;
 				xOffsetB = 0;
