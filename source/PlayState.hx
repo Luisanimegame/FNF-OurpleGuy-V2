@@ -289,6 +289,7 @@ class PlayState extends MusicBeatState
 	private var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 
 	public var inCutscene:Bool = false;
+	public var countdownFinished:Bool = false;
 	public var skipCountdown:Bool = false;
 	var songLength:Float = 0;
 
@@ -333,6 +334,76 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		Paths.clearStoredMemory();
+
+		if (SONG.song.toLowerCase() == 'criminal' || SONG.song.toLowerCase() == 'bite' || SONG.song.toLowerCase() == 'beatbox' || SONG.song.toLowerCase() == 'blubber' || SONG.song.toLowerCase() == 'trapped') gotOurpleNotes = false;
+		else gotOurpleNotes = true;
+
+		// for lua
+		instance = this;
+
+		switch(SONG.song.toLowerCase()) {
+			case 'guy':
+				songComposer = 'kiwiquest';
+			case 'midnight':
+				songComposer = 'kiwiquest';
+			case 'terminated':
+				songComposer = 'findjuno';
+			case 'lurking':
+				songComposer = 'MewMarissa';
+				if (FlxG.save.data.lurkingLock != 'beaten') FreeplaySaves.lurkingLock = 'unlocked';
+			case 'lore':
+				songComposer = 'kiwiquest';
+				if (FlxG.save.data.loreLock != 'beaten') FreeplaySaves.loreLock = 'unlocked';
+			case 'blubber':
+				songComposer = 'kiwiquest';
+				if (FlxG.save.data.blubberLock != 'beaten') FreeplaySaves.blubberLock = 'unlocked';
+			case 'golden':
+				songComposer = 'Zeroh';
+				if (FlxG.save.data.goldenLock != 'beaten') FreeplaySaves.goldenLock = 'unlocked';
+			case 'performance':
+				songComposer = 'MewMarissa';
+				if (FlxG.save.data.performanceLock != 'beaten') FreeplaySaves.performanceLock = 'unlocked';
+			case 'trapped':
+				songComposer = 'headdzo';
+				if (FlxG.save.data.trappedLock != 'beaten') FreeplaySaves.trappedLock = 'unlocked';
+			case 'bite':
+				songComposer = 'kiwiquest';
+				if (FlxG.save.data.biteLock != 'beaten') FreeplaySaves.biteLock = 'unlocked';
+			case 'go fish':
+				songComposer = 'GalXE';
+				if (FlxG.save.data.gofishLock != 'beaten') FreeplaySaves.gofishLock = 'unlocked';
+			case 'watchful':
+				songComposer = 'findjuno';
+				if (FlxG.save.data.watchfulLock != 'beaten') FreeplaySaves.watchfulLock = 'unlocked';
+			case 'restless':
+				songComposer = 'Xhitest';
+				if (FlxG.save.data.restlessLock != 'beaten') FreeplaySaves.restlessLock = 'unlocked';
+			case 'beatbox':
+				songComposer = 'Kiwiquest';
+				if (FlxG.save.data.beatboxLock != 'beaten') FreeplaySaves.beatboxLock = 'unlocked';
+			case 'showtime':
+				songComposer = 'Polyfield';
+				if (FlxG.save.data.showtimeLock != 'beaten') FreeplaySaves.showtimeLock = 'unlocked';
+			case 'man':
+				songComposer = 'justisaac';
+				if (FlxG.save.data.manLock != 'beaten') FreeplaySaves.manLock = 'unlocked';
+			case 'followed':
+				songComposer = 'findjuno';
+				if (FlxG.save.data.followedLock != 'beaten') FreeplaySaves.followedLock = 'unlocked';
+			case 'fazfuck news':
+				songComposer = 'kiwiquest';
+				if (FlxG.save.data.fazfuckLock != 'beaten') FreeplaySaves.fazfuckLock = 'unlocked';
+			case 'criminal':
+				songComposer = 'River';
+				if (FlxG.save.data.criminalLock != 'beaten') FreeplaySaves.criminalLock = 'unlocked';
+			case 'miller':
+				songComposer = '\nkiwiquest,\nheaddzo,\nfindjuno,\nPolyfield,\nGalxe';
+				if (FlxG.save.data.millerLock != 'beaten') FreeplaySaves.millerLock = 'unlocked';
+		}
+
+		FreeplaySaves.saveShit();
+		
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
 
@@ -425,7 +496,7 @@ class PlayState extends MusicBeatState
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
 		if (isStoryMode)
 		{
-			detailsText = "Story Mode: " + WeekData.getCurrentWeek().weekName;
+			detailsText = "Story Mode: Week Ourple";
 		}
 		else
 		{
@@ -2151,6 +2222,7 @@ class PlayState extends MusicBeatState
 						});
 						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
 					case 4:
+						countdownFinished = true;
 				}
 
 				notes.forEachAlive(function(note:Note) {
