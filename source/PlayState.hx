@@ -3743,7 +3743,10 @@ class PlayState extends MusicBeatState
 
 	function moveCameraSection(?id:Int = 0, isNote:Bool = false):Void {
 		if(SONG.notes[id] == null || curStage == 'vhs') return;
-			camFollow.set(gf.getMidpoint().x + xOffsetB, gf.getMidpoint().y + yOffsetB);
+		
+			if (gf != null && SONG.notes[curSection].gfSection)
+		{
+			camFollow.set(gf.getMidpoint().x, gf.getMidpoint().y);
 			camFollow.x += gf.cameraPosition[0] + girlfriendCameraOffset[0];
 			camFollow.y += gf.cameraPosition[1] + girlfriendCameraOffset[1];
 			tweenCamIn();
@@ -3758,7 +3761,7 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			moveCamera(true);
+			moveCamera(false);
 			callOnLuas('onMoveCamera', ['boyfriend']);
 		}
 	}
