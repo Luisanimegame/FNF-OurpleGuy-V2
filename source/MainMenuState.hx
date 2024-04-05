@@ -20,6 +20,9 @@ import lime.app.Application;
 import Achievements;
 import editors.MasterEditorMenu;
 import flixel.input.keyboard.FlxKey;
+import flixel.util.FlxTimer;
+import flixel.system.FlxSound;
+import flixel.addons.display.FlxTiledSprite;
 
 using StringTools;
 
@@ -32,11 +35,17 @@ class MainMenuState extends MusicBeatState
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
 
+	var menubars_top:FlxTiledSprite;
+
+	var menubars_bottom:FlxTiledSprite;
+
+	var checkerboard:FlxTiledSprite;
+	
 	var optionShit:Array<String> = [
-		'story_mode',
+		'story',
 		'freeplay',
-		'credits',
 		'options',
+		'credits',
 		'exit'
 	];
 
@@ -47,14 +56,12 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-    Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
-
-
-		#if MODS_ALLOWED
-		Paths.pushGlobalMods();
-		#end
 		WeekData.loadTheFirstEnabledMod();
+		FirstTimeFreeplay.loadShit();
+		trace(FlxG.save.data.firstTimeFreeplay);
+
+		FreeplaySaves.fuckinSet();
+		FirstTimeFreeplay.fuckinSet();
 
 		#if desktop
 		// Updating Discord Rich Presence
@@ -67,8 +74,8 @@ class MainMenuState extends MusicBeatState
 		camAchievement.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
-		FlxG.cameras.add(camAchievement, false);
-		FlxG.cameras.setDefaultDrawTarget(camGame, true);
+		FlxG.cameras.add(camAchievement);
+		FlxCamera.defaultCameras = [camGame];
 
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
@@ -98,21 +105,25 @@ class MainMenuState extends MusicBeatState
 		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		magenta.color = 0xFFfd719b;
 		add(magenta);
-		
-		var up:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menubars'));
-		up.scrollFactor.set(0, 0);
-		up.updateHitbox();
-		up.screenCenter();
-		up.antialiasing = false;
-		add(up);
-		
-		var down:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menubarsflip'));
-		down.scrollFactor.set(0, 0);
-		down.updateHitbox();
-		down.screenCenter();
-		down.antialiasing = false;
-		add(down);
-		
+
+		checkerboard = new FlxTiledSprite(Paths.image('checkerboard'), FlxG.width * 3, FlxG.width * 3, true, true);
+		checkerboard.scrollFactor.set(0, 0);
+		checkerboard.x = -100;
+		checkerboard.y = -100;
+		checkerboard.antialiasing = false;
+		add(checkerboard);
+
+		menubars_top = new FlxTiledSprite(Paths.image('menubars'), FlxG.width * 3, FlxG.width * 3, true, false);
+		menubars_top.scrollFactor.set(0, 0);
+		menubars_top.antialiasing = false;
+		add(menubars_top);
+
+		menubars_bottom = new FlxTiledSprite(Paths.image('menubarsflip'), FlxG.width * 3, FlxG.width * 3, true, false);
+		menubars_bottom.scrollFactor.set(0, 0);
+		menubars_bottom.y = FlxG.height - 130;
+		menubars_bottom.antialiasing = false;
+		add(menubars_bottom);
+
 		var phonecords:FlxSprite = new FlxSprite().loadGraphic(Paths.image('phonecord'));
 		phonecords.scrollFactor.set(0, 0);
 		phonecords.updateHitbox();
@@ -131,7 +142,7 @@ class MainMenuState extends MusicBeatState
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
-		
+
 		var scale:Float = 1.55;
 		/*if(optionShit.length > 6) {
 			scale = 6 / optionShit.length;
@@ -189,6 +200,12 @@ class MainMenuState extends MusicBeatState
 		addVirtualPad(UP_DOWN, A_B);
 		#end
 
+		if(FlxG.sound.music == null) {
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+
+			FlxG.sound.music.fadeIn(1, 0, 0.7);
+		}
+
 		super.create();
 	}
 
@@ -209,6 +226,11 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
+
+		menubars_top.scrollX -= 1 * 60 * elapsed;
+		menubars_bottom.scrollX += 1 * 60 * elapsed;
+		checkerboard.scrollX += 1 * 25 * elapsed;
+		checkerboard.scrollY -= 1 * 25 * elapsed;
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
@@ -270,7 +292,7 @@ class MainMenuState extends MusicBeatState
 
 								switch (daChoice)
 								{
-									case 'story_mode':
+									case 'story':
 										PlayState.storyPlaylist = ['guy', 'midnight', 'terminated'];
 										PlayState.isStoryMode = true;
 
@@ -280,8 +302,10 @@ class MainMenuState extends MusicBeatState
 										LoadingState.loadAndSwitchState(new PlayState(), true);
 										FreeplayState.destroyFreeplayVocals();
 									case 'freeplay':
-										MusicBeatState.switchState(new FreeplayState());
-									#if desktop
+										if (FlxG.save.data.firstTimeFreeplay) MusicBeatState.switchState(new FreeplayWelcomeState());
+										else MusicBeatState.switchState(new FreeplayState());
+										FlxG.sound.music.fadeOut(1);
+									#if MODS_ALLOWED
 									case 'mods':
 										MusicBeatState.switchState(new ModsMenuState());
 									#end
@@ -299,20 +323,13 @@ class MainMenuState extends MusicBeatState
 					});
 				}
 			}
-			#if (desktop || mobile)
-			else if (FlxG.keys.anyJustPressed(debugKeys))
-			{
-				selectedSomethin = true;
-				MusicBeatState.switchState(new MasterEditorMenu());
-			}
-			#end
 		}
 
 		super.update(elapsed);
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			
+			//spr.screenCenter(X);
 		});
 	}
 
@@ -337,8 +354,7 @@ class MainMenuState extends MusicBeatState
 				if(menuItems.length > 4) {
 					add = menuItems.length * 8;
 				}
-				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y - add);
-				spr.centerOffsets();
+				camFollow.setPosition(0, spr.getGraphicMidpoint().y - add);
 			}
 		});
 	}
