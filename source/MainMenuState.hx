@@ -42,7 +42,7 @@ class MainMenuState extends MusicBeatState
 	var checkerboard:FlxTiledSprite;
 	
 	var optionShit:Array<String> = [
-		'story',
+		'story_mode',
 		'freeplay',
 		'options',
 		'credits',
@@ -292,7 +292,7 @@ class MainMenuState extends MusicBeatState
 
 								switch (daChoice)
 								{
-									case 'story':
+									case 'story_mode':
 										PlayState.storyPlaylist = ['guy', 'midnight', 'terminated'];
 										PlayState.isStoryMode = true;
 
@@ -304,14 +304,6 @@ class MainMenuState extends MusicBeatState
 									case 'freeplay':
 										if (FlxG.save.data.firstTimeFreeplay) MusicBeatState.switchState(new FreeplayState());
 										FlxG.sound.music.fadeOut(1);
-									#if MODS_ALLOWED
-									case 'mods':
-										MusicBeatState.switchState(new ModsMenuState());
-									#end
-									case 'awards':
-										MusicBeatState.switchState(new AchievementsMenuState());
-									case 'credits':
-										MusicBeatState.switchState(new CreditsState());
 									case 'options':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
 									case 'exit':
