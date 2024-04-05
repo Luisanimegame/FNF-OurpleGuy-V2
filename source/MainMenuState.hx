@@ -302,8 +302,7 @@ class MainMenuState extends MusicBeatState
 										LoadingState.loadAndSwitchState(new PlayState(), true);
 										FreeplayState.destroyFreeplayVocals();
 									case 'freeplay':
-										if (FlxG.save.data.firstTimeFreeplay) MusicBeatState.switchState(new FreeplayWelcomeState());
-										else MusicBeatState.switchState(new FreeplayState());
+										if (FlxG.save.data.firstTimeFreeplay) MusicBeatState.switchState(new FreeplayState());
 										FlxG.sound.music.fadeOut(1);
 									#if MODS_ALLOWED
 									case 'mods':
