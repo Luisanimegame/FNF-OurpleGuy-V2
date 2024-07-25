@@ -59,7 +59,12 @@ jobs:
           haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
-          
+          haxelib set openfl 9.3.3
+          haxelib set lime
+          haxelib set flixel 5.6.1
+          haxelib set flixel-addons 1.5.1
+          haxelib set hxcpp
+
       - name: Building
         run: haxelib run lime build android -final
 
