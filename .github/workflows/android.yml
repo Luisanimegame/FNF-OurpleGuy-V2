@@ -42,28 +42,34 @@ jobs:
       - name: Installing Libraries
         run: |
           haxelib setup ~/haxelib
-          haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp 8dd30d69399f616f4e85295ce3f828219b78af17 --quiet
-          haxelib git lime https://github.com/mcagabe19-stuff/lime --quiet
-          haxelib install openfl 9.3.3 --quiet
-          haxelib install flixel 5.6.1 --quiet
-          haxelib install flixel-addons 3.2.2 --quiet
-          haxelib install flixel-tools 1.5.1 --quiet
-          haxelib git SScript https://github.com/MobilePorting/SScript c4e241b254595531396d5e52e8401c9adc3f344f --quiet
-          haxelib install tjson 1.4.0 --quiet
-          haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate 768740a56b26aa0c072720e0d1236b94afe68e3e --quiet
-          haxelib git linc_luajit https://github.com/mcagabe19-stuff/linc_luajit-legacy 923a8262a7a8dcd166264dcf22cb7395a11fba65 --quiet
-          haxelib git hxdiscord_rpc https://github.com/MAJigsaw77/hxdiscord_rpc 3538a1c2bb07b04208cd014220207f8173acdb21 --quiet --skip-dependencies
-          haxelib git hxvlc https://github.com/MAJigsaw77/hxvlc 70e7f5f3e76d526ac6fb8f0e6665efe7dfda589d --quiet --skip-dependencies
-          haxelib git funkin.vis https://github.com/FunkinCrew/funkVis d5361037efa3a02c4ab20b5bd14ca11e7d00f519 --quiet --skip-dependencies
-          haxelib git grig.audio https://gitlab.com/haxe-grig/grig.audio.git cbf91e2180fd2e374924fe74844086aab7891666 --quiet
+          haxelib install hxcpp 4.2.1 > /dev/null --quiet
+          haxelib install lime 7.9.0
+          haxelib install openfl 9.1.0
+          haxelib install flixel 4.11.0
+          haxelib install flixel-tools
+          haxelib install flixel-ui
+          haxelib install flixel-addons 3.0.2
+          haxelib git hxCodec https://github.com/SPLCoding/hxCodec-but-it-works-xd.git
+          haxelib git linc_luajit https://github.com/Sirox228/linc_luajit
+          haxelib install hscript
+          haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
+          haxelib install hxcpp-debug-server
           haxelib list
 
       - name: Configure Android
         run: |
+          haxelib run lime setup -alias -y
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
-          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_LATEST_HOME
+          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
           haxelib run lime config JAVA_HOME $JAVA_HOME
-          haxelib run lime config ANDROID_SETUP true 
+          haxelib run lime config ANDROID_SETUP true
+          haxelib set openfl 9.1.0
+          haxelib set lime 7.9.0
+          haxelib set flixel 4.11.0
+          haxelib set flixel-addons 3.0.2
+          haxelib set hxcpp 4.2.1
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Building
         run: haxelib run lime build android -final
@@ -106,6 +112,6 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
-          name: PE Android Build
-          path: export/release/android/bin/app/build/outputs/apk/debug
+          name: androidBuild
+          path: /home/runner
           if-no-files-found: warn
