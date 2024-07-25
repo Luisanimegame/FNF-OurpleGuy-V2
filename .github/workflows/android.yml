@@ -108,5 +108,5 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: PE Android Build
-          path: export/release/android/bin/app/build/outputs/apk/*.apk
+          path: export/release/android/bin/app/build/outputs/apk/debug
           if-no-files-found: warn
