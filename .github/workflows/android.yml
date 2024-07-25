@@ -41,7 +41,6 @@ jobs:
 
       - name: Installing Libraries
         run: |
-          haxelib setup ~/haxelib
           haxelib install hxcpp 4.2.1 > /dev/null --quiet
           haxelib install lime 7.9.0
           haxelib install openfl 9.1.0
@@ -54,8 +53,7 @@ jobs:
           haxelib install hscript
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib install hxcpp-debug-server
-          haxelib list
-
+          
       - name: Configure Android
         run: |
           haxelib run lime setup -alias -y
