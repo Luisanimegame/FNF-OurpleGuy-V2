@@ -41,8 +41,8 @@ jobs:
 
       - name: Installing Libraries
         run: |
-          haxelib install hxcpp 4.2.1 > /dev/null --quiet
-          haxelib install lime 7.9.0
+          haxelib install https://github.com/mcagabe19-stuff/hxcpp --quiet
+          haxelib install lime https://github.com/mcagabe19-stuff/lime
           haxelib install openfl 9.1.0
           haxelib install flixel 4.11.0
           haxelib install flixel-tools
