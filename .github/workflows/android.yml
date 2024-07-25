@@ -48,7 +48,7 @@ jobs:
           haxelib install flixel-tools 1.5.1 --quiet
           haxelib install flixel-addons 3.2.2 --quiet
           haxelib git linc_luajit https://github.com/mcagabe19-stuff/linc_luajit-legacy 923a8262a7a8dcd166264dcf22cb7395a11fba65 --quiet
-		  haxelib git hxCodec https://github.com/SPLCoding/hxCodec-but-it-works-xd.git --quiet --skip-dependencies
+	      haxelib git hxCodec https://github.com/SPLCoding/hxCodec-but-it-works-xd.git --quiet
           
       - name: Configure Android
         run: |
