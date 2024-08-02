@@ -13,12 +13,6 @@
       "url": "https://github.com/MobilePorting/linc_luajit-0.6.3.git"
     },
     {
-      "name": "hscript-ex",
-      "type": "git",
-      "ref": "main",
-      "url": "https://github.com/ianharrigan/hscript-ex"
-    },
-    {
       "name": "extension-androidtools",
       "type": "git",
       "ref": "main",
@@ -26,10 +20,6 @@
     },
     {
       "name": "flixel-tools",
-      "type": "haxelib"
-    },
-    {
-      "name": "hscript",
       "type": "haxelib"
     },
     {
